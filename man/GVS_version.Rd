@@ -10,10 +10,10 @@ GVS_version(...)
 \item{...}{Additional arguments passed to internal functions.}
 }
 \value{
-Dataframe containing current NSR version number, build date, and code version.
+Dataframe containing current GVS version number, build date, and code version.
 }
 \description{
-Return metadata about the current NSR version
+Return metadata about the current GVS version
 }
 \examples{
 {
