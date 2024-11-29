@@ -1,12 +1,11 @@
-Package: RGVS
-Title: What the Package Does (One Line, Title Case)
+Package: GVS
+Title: Geocoordinate Validation Service.
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Brian", "Maitner", , "bmaitner@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "https://orcid.org/0000-0002-2118-9880"))
+Description: The Geocoordinate Validation Service runs checks of coordinates in latitude/longitude format.  It returns annotated coordinates with additional flags and metadata that can be used in data cleaning.  Additionally, the package has functions related to attribution and metadata information.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
