@@ -18,9 +18,9 @@ List containing: (1) bibtex-formatted citation information, (2) information abou
 Returns metadata on GVS including version and citation information
 }
 \note{
-This function provides citation information in bibtex format that can be used with reference manager software (e.g. Paperpile, Zotero). Please remember to cite both the sources and the NSR, as the NSR couldn't exist without these sources!
+This function provides citation information in bibtex format that can be used with reference manager software (e.g., Paperpile, Zotero). Please remember to cite both the sources and the GVS, as the GVS couldn't exist without these sources!
 
-This function is a wrapper that returns the output of the functions NSR_citations, NSR_sources, and NSR_version.
+This function is a wrapper that returns the output of the functions GVS_citations, GVS_sources, and GVS_version.
 }
 \examples{
 {
