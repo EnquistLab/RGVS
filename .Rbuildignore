@@ -4,3 +4,5 @@
 misc
 old_builds
 ^cran-comments\.md$
+.git
+.github
