@@ -1,0 +1,87 @@
+---
+title: "GVS R package"
+author: "Brian Maitner"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{GVS R package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Geocoordinate Validation Service
+
+The package `GVS` is designed to interact with the Geocoordinate Validation Service API of the Botanical Information and Ecology Network. The GVS accepts a point of observation (PO; pair of latitude, longitude coordinates in decimal degrees) and returns the country, state and county in which the point is located. It also calculates the distance between the OP and six different types of centroids for each of the three political divisions (see Centroid Types) and indicates for each political division if it is small enough for the OP itself to potentially be a centroid (see Distance Thresholds. Finally, the GVS indicates which of the three potential political division centroids is the most likely, if any, based on the threshold parameter MAX_DIST (distance to the actual centroid) and MAX_DIST_REL (relative distance: distance to actual centroid / distance from actual centroid to the farthest point in the political division). In addition, the GVS validates the submitted coordinates and reports errors such as non-numeric values and values out of bounds. Valid coordinates which do not join to any political division are flagged as "Point in ocean".
+
+
+## Installation
+```{r, eval=FALSE}
+
+library(devtools)
+install_github("EnquistLab/RGVS")
+
+
+```
+
+## Using the GVS
+
+The GVS takes as input a dataframe consiting of two columns: latitude and longitude (in that order). We provide an example dataset, `gvs_testfile`.
+
+```{r}
+
+library(GVS)
+
+# Load the sample dataset
+
+gvs_data <- gvs_testfile
+
+# View the structure
+head(gvs_data)
+
+```
+
+To run data through the GVS, we use the function `GVS`
+
+```{r}
+
+gvs_results <- GVS(occurrence_dataframe = gvs_data)
+
+# The resulting output has a lot of information that can be used in data cleaning.
+
+colnames(gvs_results)
+
+
+```
+The contents of some of these columns may not be immediately clear. In this case, we can consult the data dictionary.
+
+```{r}
+
+dd <- GVS_data_dictionary()
+
+
+```
+
+We can now use these metadata to exclude questionable data (or try to fix it).  For example, we'll certainly want to exclude coordinates that are non-numeric or impossible!  Depending on our purposes, we may also want to exclude coordinates that correspond to centroids or those that fall into the ocean.
+
+## Additional information about the GVS
+
+In addition to the coordinate resolution, the GVS offers metadata responses describing current code and database versions, and formatted acknowledgements and citations. For a quick overview, you can use the function `GVS_metadata`. If you use the GVS in a publication and need to cite it, proper attribution information is available with `GVS_citations`.
+
+```{r}
+
+cites <- GVS_citations()
+
+# The citation column provides Bibtex format citations that can be pasten into a reference manager (e.g., EndNote, PaperPile, Zotero)
+
+cites$citation
+
+```
+
+
+
+
