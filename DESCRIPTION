@@ -1,5 +1,5 @@
 Package: GVS
-Title: Geocoordinate Validation Service.
+Title: Geocoordinate Validation Service
 Version: 0.0.0.9000
 Authors@R: c(
     person("Brian", "Maitner", email = "bmaitner@gmail.com",
