@@ -1,10 +1,11 @@
 Package: GVS
 Title: Geocoordinate Validation Service
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: c(
     person("Brian", "Maitner", email = "bmaitner@gmail.com",
     role = c("aut", "cre"),
     comment = c(ORCID = "https://orcid.org/0000-0002-2118-9880")),
+    person("Brad", "Boyle", email = "bboyle@email.arizona.edu", role = c("aut")),
     person("Rethvick Sriram Yugendra", "Babu", email = "rethvick@arizona.edu",
     role = c("aut"))
     )
