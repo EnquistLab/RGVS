@@ -30,7 +30,7 @@ install_github("EnquistLab/RGVS")
 
 ## Using the GVS
 
-The GVS takes as input a dataframe consiting of two columns: latitude and longitude (in that order). We provide an example dataset, `gvs_testfile`.
+The GVS takes as input a dataframe consisting of two columns: latitude and longitude (in that order). We provide an example dataset, `gvs_testfile`.
 
 ```{r}
 
@@ -70,7 +70,7 @@ We can now use these metadata to exclude questionable data (or try to fix it).  
 
 ## Additional information about the GVS
 
-In addition to the coordinate resolution, the GVS offers metadata responses describing current code and database versions, and formatted acknowledgements and citations. For a quick overview, you can use the function `GVS_metadata`. If you use the GVS in a publication and need to cite it, proper attribution information is available with `GVS_citations`.
+In addition to the coordinate resolution, the GVS offers metadata responses describing current code and database versions, and formatted citations. For a quick overview, you can use the function `GVS_metadata`. If you use the GVS in a publication and need to cite it, proper attribution information is available with `GVS_citations`.
 
 ```{r}
 

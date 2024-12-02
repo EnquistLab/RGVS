@@ -8,7 +8,7 @@ Authors@R: c(
     person("Rethvick Sriram Yugendra", "Babu", email = "rethvick@arizona.edu",
     role = c("aut"))
     )
-Description: The Geocoordinate Validation Service runs checks of coordinates in latitude/longitude format.  It returns annotated coordinates with additional flags and metadata that can be used in data cleaning.  Additionally, the package has functions related to attribution and metadata information. More information can be found at https://github.com/ojalaquellueva/gvs/tree/master/api
+Description: The Geocoordinate Validation Service runs checks of coordinates in latitude/longitude format. It returns annotated coordinates with additional flags and metadata that can be used in data cleaning.  Additionally, the package has functions related to attribution and metadata information. More information can be found at <https://github.com/ojalaquellueva/gvs/tree/master/api>.
 Depends: 
         R (>= 3.5.0)
 License: MIT + file LICENSE
