@@ -5,7 +5,7 @@
 \title{Handle API access and format}
 \usage{
 gvs_core(
-  url = "http://vegbiendev.nceas.ucsb.edu:7775/gvs_api.php",
+  url = "https://gvsapi.xyz/gvs_api.php",
   mode,
   data_json = NULL,
   batches = NULL,
