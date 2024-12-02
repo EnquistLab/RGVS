@@ -7,12 +7,12 @@
 GVS(occurrence_dataframe, ...)
 }
 \arguments{
-\item{occurrence_dataframe}{A properly formatted dataframe, see https://bien.nceas.ucsb.edu/bien/tools/nsr/batch-mode/}
+\item{occurrence_dataframe}{A properly formatted dataframe, see \code{gvs_testfile}}
 
 \item{...}{Additional arguments passed to internal functions.}
 }
 \value{
-Dataframe containing NSR results.
+Dataframe containing GVS results.
 }
 \description{
 GVS returns information on coordinate validity.
@@ -21,6 +21,6 @@ GVS returns information on coordinate validity.
 \dontrun{
 
 results <- GVS(occurrence_dataframe = gvs_testfile)
+
 }
-occurrence_dataframe <-data
 }

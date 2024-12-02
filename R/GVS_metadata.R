@@ -3,7 +3,7 @@
 #'Returns metadata on GVS including version and citation information
 #' @param bibtex_file Optional output file for writing bibtex citations.
 #' @param ... Additional arguments passed to internal functions.
-#' @return List containing: (1) bibtex-formatted citation information, (2) information about NSR data sources, and (3) NSR version information.
+#' @return List containing: (1) bibtex-formatted citation information, (2) information about GVS data sources, and (3) GVS version information.
 #' @note This function provides citation information in bibtex format that can be used with reference manager software (e.g., Paperpile, Zotero). Please remember to cite both the sources and the GVS, as the GVS couldn't exist without these sources!
 #' @note This function is a wrapper that returns the output of the functions GVS_citations, GVS_sources, and GVS_version.
 #' @export

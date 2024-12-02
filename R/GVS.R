@@ -1,15 +1,15 @@
 #'Check the validity of coordinates
 #'
 #'GVS returns information on coordinate validity.
-#' @param occurrence_dataframe A properly formatted dataframe, see https://bien.nceas.ucsb.edu/bien/tools/nsr/batch-mode/
+#' @param occurrence_dataframe A properly formatted dataframe, see `gvs_testfile`
 #' @param ... Additional arguments passed to internal functions.
-#' @return Dataframe containing NSR results.
+#' @return Dataframe containing GVS results.
 #' @export
 #' @examples \dontrun{
 #'
 #'results <- GVS(occurrence_dataframe = gvs_testfile)
+#'
 #' }
-#' occurrence_dataframe <-data
 GVS <- function(occurrence_dataframe,
                 ...){
 

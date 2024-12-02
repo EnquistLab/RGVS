@@ -16,7 +16,7 @@ Dataframe containing bibtex-formatted citation information
 Returns information needed to cite the GVS
 }
 \note{
-This function provides citation information in bibtex format that can be used with reference manager software (e.g. Paperpile, Zotero). Please do remember to cite both the sources and the NSR, as the NSR couldn't exist without these sources!
+This function provides citation information in bibtex format that can be used with reference manager software (e.g. Paperpile, Zotero). Please do remember to cite both the sources and the GVS, as the GVS couldn't exist without these sources!
 }
 \examples{
 {

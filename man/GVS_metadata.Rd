@@ -12,7 +12,7 @@ GVS_metadata(bibtex_file = NULL, ...)
 \item{...}{Additional arguments passed to internal functions.}
 }
 \value{
-List containing: (1) bibtex-formatted citation information, (2) information about NSR data sources, and (3) NSR version information.
+List containing: (1) bibtex-formatted citation information, (2) information about GVS data sources, and (3) GVS version information.
 }
 \description{
 Returns metadata on GVS including version and citation information
