@@ -5,7 +5,7 @@
 #' @param ... Additional arguments passed to internal functions.
 #' @return Dataframe containing GVS results.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #'
 #'results <- GVS(occurrence_dataframe = gvs_testfile)
 #'

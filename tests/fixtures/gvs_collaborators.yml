@@ -16,7 +16,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 02 Dec 2024 20:35:28 GMT
+      date: Tue, 03 Dec 2024 21:59:34 GMT
       server: Apache
       access-control-allow-origin: '*'
       content-length: '807'
@@ -29,5 +29,5 @@ http_interactions:
         National Center for Ecological Analysis and Synthesis","collaborator_url":"https:\/\/www.nceas.ucsb.edu\/","description":null,"logo_path":"images\/nceas.png"},{"collaborator_name":"University
         of Arizona","collaborator_name_full":"The University of Arizona","collaborator_url":"https:\/\/www.arizona.edu\/","description":null,"logo_path":"images\/UA.png"},{"collaborator_name":"NSF","collaborator_name_full":"The
         National Science Foundation","collaborator_url":"https:\/\/www.nsf.gov\/","description":null,"logo_path":"images\/nsf.png"}]'
-  recorded_at: 2024-12-02 20:35:26 GMT
+  recorded_at: 2024-12-03 21:59:32 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

@@ -18,7 +18,7 @@ Dataframe containing GVS results.
 GVS returns information on coordinate validity.
 }
 \examples{
-\dontrun{
+\donttest{
 
 results <- GVS(occurrence_dataframe = gvs_testfile)
 

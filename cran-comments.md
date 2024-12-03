@@ -14,3 +14,6 @@
 * This is a new release.
 
 ## Notes
+
+* Updated dontrun to donttest for GVS() example.
+* Title in the description was left in quotes as it is the name of an API, and I was previously told that API names should always appear in single quotes in the title and description.

@@ -16,7 +16,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Mon, 02 Dec 2024 20:35:27 GMT
+      date: Tue, 03 Dec 2024 21:59:34 GMT
       server: Apache
       access-control-allow-origin: '*'
       content-length: '517'
@@ -31,5 +31,5 @@ http_interactions:
         author= {{University of California, Berkeley, Museum of Vertebrate Zoology}},
         title = {Global Administrative Areas}, url = {https:\/\/gadm.org\/}, note
         = {Accessed May 6, 2022}}"}]'
-  recorded_at: 2024-12-02 20:35:25 GMT
+  recorded_at: 2024-12-03 21:59:32 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0
