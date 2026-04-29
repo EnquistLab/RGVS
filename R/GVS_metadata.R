@@ -18,11 +18,21 @@ GVS_metadata <- function(bibtex_file=NULL, ...){
   output[[1]] <- GVS_citations(...)
   output[[2]] <- GVS_sources(...)
   output[[3]] <- GVS_version(...)
+  
+  if(length(output)< 3){
+    
+    message("One or more of the component API calls failed.")
+    return(invisible(NULL))
+    
+  }
 
-  names(output)<-c("citations","version","sources")
+  names(output) <- c("citations","version","sources")
 
   #Write the bibtex information if a file is specified
-  if(!is.null(bibtex_file)){writeLines(text = output$citations$citation, con = bibtex_file)}
+  
+  if(!is.null(bibtex_file)){
+    writeLines(text = output$citations$citation,
+               con = bibtex_file)}
 
   return(output)
 
