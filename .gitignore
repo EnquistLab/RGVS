@@ -5,3 +5,5 @@
 *.Rproj
 misc
 .positai
+/doc/
+/Meta/

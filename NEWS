@@ -4,6 +4,7 @@
 ## NEW FEATURES
 
 ## Bug fixes
+* Fixed bug that appears in GVS_metadata when servers are down.
 
 ===============
 # GVS 0.0.1
