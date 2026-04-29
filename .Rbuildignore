@@ -11,3 +11,5 @@ old_builds
 ^\.claude$
 ^doc$
 ^Meta$
+revdep
+docs
