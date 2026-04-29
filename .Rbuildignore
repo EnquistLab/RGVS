@@ -7,3 +7,5 @@ old_builds
 .git
 .github
 ^CRAN-SUBMISSION$
+^\.positai$
+^\.claude$
