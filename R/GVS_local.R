@@ -566,6 +566,11 @@ gvs_historical_centroids <- function(lon, lat, dates, dir, thr_abs, thr_rel, tol
 #'     <keys>", or NA.}
 #'   \item{geovalid_state_current, geovalid_county_current}{the point's current
 #'     GADM state / county are the resolved ones.}
+#'   \item{alt_division_status}{for a division belonging to another system (a
+#'     Swedish landskap, a Watsonian vice-county, a Norwegian county from after the
+#'     2018 or 2020 reform): "valid" when the point falls in one of the GADM units
+#'     that division covers, "invalid" when it does not, and "unverifiable" when
+#'     those units are not known. NA when no such division was declared.}
 #'   \item{subnational_status}{"valid", "invalid", or "unverifiable": GNRS could
 #'     not place the named state/county in a successor, or they disagree with
 #'     today's divisions while the country is valid only historically.}
@@ -574,6 +579,18 @@ gvs_historical_centroids <- function(lon, lat, dates, dir, thr_abs, thr_rel, tol
 #' }
 #' @keywords internal
 #' @noRd
+#' The GADM units an alternative division covers, as GNRS wrote them to the cache
+#'
+#' Internal.  NULL when the alternative-division component has not been built, in
+#' which case such a division can only be reported as unverifiable.
+#' @keywords internal
+#' @noRd
+gvs_altdiv_extent <- function(dir) {
+  f <- file.path(dir, "altdiv-extent.gz.parquet")
+  if (!file.exists(f)) return(NULL)
+  as.data.frame(nanoparquet::read_parquet(f))
+}
+
 gvs_geovalidity <- function(lon, lat, dates, loc, gnrs, dir, tolerance_years) {
   n <- length(lon)
   s <- function(x) { x <- as.character(x); x[is.na(x)] <- ""; x }
@@ -640,18 +657,47 @@ gvs_geovalidity <- function(lon, lat, dates, loc, gnrs, dir, tolerance_years) {
 
   st_cur <- ifelse(!nzchar(g1), NA, s(loc$gid_1) == g1)
   co_cur <- ifelse(!nzchar(g2), NA, s(loc$gid_2) == g2)
-  sub_given <- nzchar(g1) | nzchar(g2) | nzchar(gsub_status)
+
+  # A declared division that belongs to ANOTHER division system - a Swedish landskap,
+  # a Watsonian vice-county, a Norwegian county from after the 2018 or 2020 reform -
+  # is not a GADM unit, so GNRS leaves gid_1 and gid_2 empty and names the unit in
+  # alt_division instead. Where the GADM units it covers are known, the point must
+  # fall in one of them; where they are not, the claim cannot be checked and the
+  # record is unverifiable rather than invalid. Before this, such a name was matched
+  # to the nearest-looking GADM unit and the record then looked invalid although it
+  # was correctly georeferenced and correctly labelled in its own system.
+  alt <- if ("alt_division" %in% names(gnrs)) s(gnrs$alt_division) else rep("", n)
+  alt_status <- rep(NA_character_, n)
+  if (any(nzchar(alt))) {
+    ex <- gvs_altdiv_extent(dir)
+    for (k in unique(alt[nzchar(alt)])) {
+      i <- which(alt == k)
+      e <- if (is.null(ex)) NULL else ex[ex$entity_key == k, , drop = FALSE]
+      if (is.null(e) || !nrow(e)) {
+        alt_status[i] <- "unverifiable"
+        next
+      }
+      lg <- if (e$level[1] == 1L) s(loc$gid_1)[i] else s(loc$gid_2)[i]
+      alt_status[i] <- ifelse(!nzchar(lg), "unverifiable",
+                              ifelse(lg %in% e$gid, "valid", "invalid"))
+    }
+  }
+
+  sub_given <- nzchar(g1) | nzchar(g2) | nzchar(gsub_status) | nzchar(alt)
   contradicted <- (st_cur %in% FALSE) | (co_cur %in% FALSE)
   sub_status <- ifelse(!sub_given, NA_character_,
                 ifelse(gsub_status == "unverifiable", "unverifiable",
                 ifelse(!contradicted, "valid",
                 ifelse(any_country & !(cur_country %in% TRUE), "unverifiable", "invalid"))))
+  # what the alternative division says stands for the division it names
+  sub_status <- ifelse(!is.na(alt_status), alt_status, sub_status)
   data.frame(
     geovalid_country_current = cur_country,
     geovalid_country_any = ifelse(named, any_country, NA),
     geovalid_basis = basis,
     geovalid_state_current = st_cur,
     geovalid_county_current = co_cur,
+    alt_division_status = alt_status,
     subnational_status = sub_status,
     geovalid = ifelse(named, any_country & !(sub_status %in% "invalid"), NA),
     stringsAsFactors = FALSE
